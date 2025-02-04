@@ -11,13 +11,12 @@ public class DepositAccount extends Account {
     public double take(double amount) {
 
         if (System.currentTimeMillis() / 1000 - lastTake > 5000) {
-            money -= (amount + 0.01 * amount);
-            System.out.println("TAKE" + money);
+            this.editBalance(-amount);
             updateUser();
         } else {
             System.out.println(":: Warning, try again in a few seconds");
         }
         lastTake = (int) (System.currentTimeMillis()/1000L);
-        return money;
+        return this.getBalance();
     }
 }

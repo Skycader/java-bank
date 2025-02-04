@@ -4,10 +4,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Account {
-    protected int userId = -1;
-    protected String userPassword = "";
-    protected String userName = "";
-    protected double money = 0;
+    private int userId = -1;
+    private String userPassword = "";
+    private String userName = "";
+    private double money = 0;
 
     public Account(String name, String password, int accountType) throws FileNotFoundException {
 
@@ -31,6 +31,14 @@ public class Account {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void editBalance(double amount) {
+        this.money += amount;
+    }
+
+    public double getBalance() {
+        return this.money;
     }
 
     public double put(double amount) {

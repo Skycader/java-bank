@@ -9,9 +9,8 @@ public class CardAccount extends Account {
 
     @Override
     public double take(double amount) {
-        money-=(amount + 0.01*amount);
-        System.out.println("TAKE" + money);
+        this.editBalance(-(amount + 0.01*amount));
         updateUser();
-        return money;
+        return this.getBalance();
     }
 }
