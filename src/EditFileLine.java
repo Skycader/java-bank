@@ -2,7 +2,7 @@ import java.io.*;
 
 public class EditFileLine {
 
-        public static void edit(String newLineContent, int lineNumber) {
+        public static void edit(String newBalance, int lineNumber) {
             String filePath = "src/users.txt"; // путь к вашему файлу
 
             File inputFile = new File(filePath);
@@ -17,7 +17,10 @@ public class EditFileLine {
                 while ((currentLine = reader.readLine()) != null) {
                     // Если текущая строка - это строка, которую мы хотим изменить, записываем новое содержание
                     if (currentLineNumber == lineNumber) {
-                        writer.write(newLineContent);
+                        String change = currentLine.replaceFirst("\\b(\\d+\\.*\\d*)\\s(\\d+\\.*\\d*)\\s(\\d+\\.*\\d*)\\b",newBalance);
+                        System.out.println(change);
+                        writer.write(change);
+
                     } else {
                         // Иначе просто копируем текущую строку
                         writer.write(currentLine);

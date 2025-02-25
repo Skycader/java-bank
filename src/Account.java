@@ -2,15 +2,18 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
-public class Account {
+abstract class Account {
     private int userId = -1;
     private String userPassword = "";
     private String userName = "";
     private double money = 0;
+    private int accountType = 0;
+    private String userType = "";
 
     public Account(String name, String password, int accountType) throws FileNotFoundException {
-
+        this.accountType = accountType;
         String file = "src/users.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
@@ -18,7 +21,8 @@ public class Account {
             while ((line = br.readLine()) != null) {
                 String userName = line.split(" ")[0];
                 String userPassword = line.split(" ")[1];
-                String userMoney = line.split(" ")[2+accountType];
+                this.userType = line.split(" ")[2];
+                String userMoney = line.split(" ")[3+accountType];
                 if (userName.equals(name) && userPassword.equals(password)) {
                     money = Double.parseDouble(userMoney);
                     this.userName = userName;
@@ -41,10 +45,14 @@ public class Account {
         return this.money;
     }
 
-    public double put(double amount) {
+    public int getUserCommission() {
+        String[] userTypes = {"", "premium", "client"};
+        return  Arrays.asList(userTypes).indexOf(this.userType);
+    }
+
+    public void put(double amount) {
         money+=amount;
         updateUser();
-        return money;
     }
 
     public double take(double amount) {
@@ -62,6 +70,17 @@ public class Account {
     }
 
     public void updateUser() {
-        EditFileLine.edit(this.userName + " " + this.userPassword + " " + this.money,this.userId);
+        switch(accountType) {
+            case 0:
+                EditFileLine.edit(this.money +" $2 $3",this.userId);
+                break;
+            case 1:
+                EditFileLine.edit("$1 "+this.money +" $3",this.userId);
+                break;
+            case 2:
+                EditFileLine.edit("$1 $2 " + this.money,this.userId);
+                break;
+        }
+
     }
 }

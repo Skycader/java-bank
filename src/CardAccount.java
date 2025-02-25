@@ -9,7 +9,8 @@ public class CardAccount extends Account {
 
     @Override
     public double take(double amount) {
-        this.editBalance(-(amount + 0.01*amount));
+        System.out.println("Комиссия составит: 0." + this.getUserCommission() + "%");
+        this.editBalance(-(amount + 0.01*amount*this.getUserCommission()));
         updateUser();
         return this.getBalance();
     }
