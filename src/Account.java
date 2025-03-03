@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 
-abstract class Account {
+abstract class Account extends AccountBlueprint {
     private int userId = -1;
     private String userPassword = "";
     private String userName = "";
@@ -12,6 +12,10 @@ abstract class Account {
     private int accountType = 0;
     private String userType = "";
 
+    @Override
+    void doNothing() {
+
+    }
     public Account(String name, String password, int accountType) throws FileNotFoundException {
         this.accountType = accountType;
         String file = "src/users.txt";

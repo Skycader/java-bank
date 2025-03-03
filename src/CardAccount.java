@@ -14,4 +14,9 @@ public class CardAccount extends Account {
         updateUser();
         return this.getBalance();
     }
+
+    @Override
+    void doNothing(int a) {
+
+    }
 }

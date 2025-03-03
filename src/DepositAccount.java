@@ -2,6 +2,16 @@ import java.io.FileNotFoundException;
 
 public class DepositAccount extends Account {
 
+    @Override
+    void doNothing(int a) {
+
+    }
+
+    @Override
+    void doNothing() {
+
+    }
+
     private int lastTake = 0;
     public DepositAccount(String name, String password) throws FileNotFoundException {
         super(name, password, 2);
