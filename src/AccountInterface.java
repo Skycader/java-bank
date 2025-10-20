@@ -1,6 +1,6 @@
 import java.io.FileNotFoundException;
 
-public abstract class AccountInterface {
+public abstract class AccountInterface implements IAccount {
 
     public abstract void editBalance(double amount);
 
