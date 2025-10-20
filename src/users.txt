@@ -1,2 +1,2 @@
-root root premium 400.0 3979.8 1869.0
+root root premium 600.0 3979.8 1869.0
 Skycader root client 0 -20.4 0
