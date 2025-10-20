@@ -23,6 +23,11 @@ public class Main {
                 String command = line.split("\\s")[0];
 
                 switch (command) {
+                    case "help":
+                        System.out.println(":: Available commands: ");
+                        System.out.println("- login");
+                        System.out.println("- stop");
+                        break;
                     case "login":
                         System.out.println(":: Login: ");
                          name = input.nextLine();
@@ -80,6 +85,13 @@ public class Main {
                 String command = line.split("\\s")[0];
 
                 switch (command) {
+                    case "help":
+                        System.out.println(":: Available commands: ");
+                        System.out.println("- select");
+                        System.out.println("- logout");
+                        System.out.println("- put");
+                        System.out.println("- take");
+                        break;
                     case "select":
                         isAccountSelected = false;
                         break;
