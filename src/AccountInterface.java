@@ -1,3 +1,20 @@
-abstract public class AccountInterface {
-    abstract void editBalance(double balance);
+import java.io.FileNotFoundException;
+
+public abstract class AccountInterface {
+
+    public abstract void editBalance(double amount);
+
+    public abstract double getBalance();
+
+    public abstract int getUserCommission();
+
+    public abstract void put(double amount);
+
+    public abstract void take(double amount);
+
+    public abstract double getMoney();
+
+    public abstract String getName();
+
+    public abstract void updateUser();
 }
