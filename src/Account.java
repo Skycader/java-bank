@@ -4,18 +4,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 
-abstract class Account extends AccountBlueprint {
+abstract class Account extends AccountInterface {
     private int userId = -1;
-    private String userPassword = "";
     private String userName = "";
     private double money = 0;
     private int accountType = 0;
     private String userType = "";
 
-    @Override
-    void doNothing() {
-
-    }
     public Account(String name, String password, int accountType) throws FileNotFoundException {
         this.accountType = accountType;
         String file = "src/users.txt";
@@ -31,7 +26,6 @@ abstract class Account extends AccountBlueprint {
                     money = Double.parseDouble(userMoney);
                     this.userName = userName;
                     this.userId = lineNumber;
-                    this.userPassword = userPassword;
                     break;
                 }
                 lineNumber++;
@@ -59,10 +53,9 @@ abstract class Account extends AccountBlueprint {
         updateUser();
     }
 
-    public double take(double amount) {
+    public void take(double amount) {
         money-=amount;
         updateUser();
-        return money;
     }
 
     public double getMoney() {
